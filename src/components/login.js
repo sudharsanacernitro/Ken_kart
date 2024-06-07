@@ -27,7 +27,7 @@ function App() {
   {
     console.log(data);
     try {
-            const response = await fetch('http://localhost:5000/endpoint', {
+            const response = await fetch('http://localhost:5000/login', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ function App() {
 
         <div id="form">
           <div className='input'>
-          <h1>LOG-IN</h1>
+          <h1>LOGIN</h1>
           </div>
 
           <div className='input'>
