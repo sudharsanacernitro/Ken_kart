@@ -1,7 +1,6 @@
 import { useEffect,useState } from 'react';
-import './login.css';
 import { useNavigate } from 'react-router-dom';
-import Header from './base_components/header';
+import Header from '../base_components/header';
 import Cards from './cards';
 function Main()
 {

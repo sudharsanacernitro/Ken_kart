@@ -24,7 +24,7 @@ app.post('/main_data', (req, res) => {
   let completedQueries = 0;
 
   data.forEach(element => {
-    connection.query(`SELECT * FROM product WHERE main_cat="${element}"`, (error, results, fields) => {
+    connection.query(`SELECT img,id,main_cat,name FROM product WHERE main_cat="${element}"`, (error, results, fields) => {
       if (error) {
         console.error('An error occurred while executing the query:', error);
         res.status(500).send('An error occurred while processing your request.');
@@ -42,9 +42,25 @@ app.post('/main_data', (req, res) => {
   });
 });
 
+app.post('/sub_main',async(req,res)=>{
 
+  var id=req.body.id;
+  console.log(id);
+  connection.query(`SELECT * FROM product WHERE id=${id}`,(error, results, fields) => {
+    if (error) {
+      console.error('An error occurred while executing the query:', error);
+      res.status(500).send('An error occurred while processing your request.');
+      return;
+    }
+    //console.log(results);
+    res.status(200).json(results);
+
+  });
+
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
